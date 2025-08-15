@@ -177,4 +177,38 @@ integrityMaxRate:
 
 Like gNB, the mcc and mnc were changed to '001' and '01', the first 5 or 6 digit of imsi represent the mcc and mnc assigned, note that mnc '01' and mnc '001' are completely different things when making configuration, and the behind digit are the subscriber number. For gnbSearchList, it is changed to the gNB VM IP, which is 192.168.56.104, and the initial PDU session change the network type from apn to dnn as apn is only used in a loopback address, while dnn is used when connecting across VMs.
 
-## Building gNB and UE
+### Building gNB and UE
+
+After we done with the configuration of gNB and UE, it is time for us to build it. To build the gnb, you just need to type the following command:
+```
+cd/UERANSIM
+./nr-gnb -c ../config/your_gnb_filename.yaml
+```
+
+Same goes to UE:
+```
+cd/UERANSIM
+sudo ./nr-ue -c ../config/your_ue_filename.yaml
+```
+
+To verify it is successfully built, you can check the log outcome generated when creating them, look for the line **NG Setup procedure is successful** for gNB and **Connection setup for PDU session[1] is successful, TUN interface[uesismtun0, 10.45.X.X] is up** for UE.
+
+If you wish to create multiple UE at once then you can run this command:
+```
+sudo ./nr-ue -c ../config/your_ue_filename.yaml -n <number>
+```
+
+## Connectivity test
+
+To test connection to network existed in UE, we can use ping or curl to the network to verify the connection. Here are some example of connectivity test using ping and curl to the internet.
+```
+ping -I uesimtun0 8.8.8.8
+```
+or
+```
+sudo curl --interface uesimtun0 google.com
+```
+
+## Summary
+
+In summary, the first milestone of this project is to create a functional network digital twin, after successfully created the network digital twin, I will be moving to creating the twinning agent for both physical and digital side components, as well as UE mirroring will be implemented afterward.
