@@ -212,3 +212,13 @@ sudo curl --interface uesimtun0 google.com
 ## Summary
 
 In summary, the first milestone of this project is to create a functional network digital twin, after successfully created the network digital twin, I will be moving to creating the twinning agent for both physical and digital side components, as well as UE mirroring will be implemented afterward.
+
+## Milestone 2
+
+### Target goal
+
+To develop twinning agent for physical testbed and virtual testbed and connect both of them using Mosquitto MQTT, Eclipse Mosquitto. The use of twinning agent is to ensure there is a communication link between both testbed. 
+
+In this milestone stage, the work completed were automize UE registration, synchronize traffic data, and create monitoring tools, these combined are the concept of twinning agent. Each work progress will be explain in details later. The whole procress is necessary as it is needed for achieving ZeroTouch Network & Service Management (ZSM). 
+
+### UE Registration
